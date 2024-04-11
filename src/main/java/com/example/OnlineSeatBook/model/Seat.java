@@ -2,23 +2,16 @@ package com.example.OnlineSeatBook.model;
 
 import jakarta.persistence.*;
 
-import java.util.HashSet;
-import java.util.Set;
-
 @Entity
 @Table(name = "seats")
 public class Seat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @ManyToMany
-    @JoinTable(
-            name = "seat_floor",
-            joinColumns = @JoinColumn(name = "seat_id"),
-            inverseJoinColumns = @JoinColumn(name = "floor_id")
-    )
-    private Set<Floor> floors;
-    private String seatNumber;
+    @ManyToOne
+    private Floor floor;
+    private int seatIndex;
+    private int section;
     private boolean isAvailable;
 
     // Getters, setters, and constructors
@@ -30,20 +23,20 @@ public class Seat {
         this.id = id;
     }
 
-    public Set<Floor> getFloors() {
-        return floors;
+    public Floor getFloor() {
+        return floor;
     }
 
-    public void setFloors(Set<Floor> floors) {
-        this.floors = floors;
+    public void setFloor(Floor floor) {
+        this.floor = floor;
     }
 
-    public String getSeatNumber() {
-        return seatNumber;
+    public int getSeatIndex() {
+        return seatIndex;
     }
 
-    public void setSeatNumber(String seatNumber) {
-        this.seatNumber = seatNumber;
+    public void setSeatIndex(int seatIndex) {
+        this.seatIndex = seatIndex;
     }
 
     public boolean isAvailable() {
@@ -54,10 +47,19 @@ public class Seat {
         isAvailable = available;
     }
 
-    public Seat(String seatNumber, boolean isAvailable) {
-        this.seatNumber = seatNumber;
+    public int getSection() {
+        return section;
+    }
+
+    public void setSection(int section) {
+        this.section = section;
+    }
+
+    public Seat(int seatNumber, int section, boolean isAvailable) {
+        this.seatIndex = seatNumber;
         this.isAvailable = isAvailable;
-        this.floors = new HashSet<>();
+        this.section= section;
+        this.floor = new Floor();
     }
 
     public Seat() {

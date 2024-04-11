@@ -10,21 +10,23 @@ import java.util.Set;
 public class Floor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @ManyToOne
-    @JoinColumn(name = "office_id")
-    private Office office;
+    private Long id;
+
     private int floorNumber;
     private int seatCapacity;
-    @ManyToMany(mappedBy = "floors")
+
+    @ManyToOne
+    private Office office;
+
+    @OneToMany(mappedBy = "floor")
     private Set<Seat> seats;
 
     // Getters, setters, and constructors
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
