@@ -1,5 +1,6 @@
 package com.example.OnlineSeatBook.controller;
 
+import com.example.OnlineSeatBook.exception.ResourceNotFoundException;
 import com.example.OnlineSeatBook.model.Office;
 import com.example.OnlineSeatBook.repository.OfficeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,21 @@ public class OfficeController {
     @PostMapping
     public Office createOffice(@RequestBody Office office) {
         return officeRepository.save(office);
+    }
+
+    @CrossOrigin("http://localhost:3000")
+    @PutMapping("/{id}")
+    public Office updateOffice(@PathVariable int id, @RequestBody Office updatedOffice) {
+        return officeRepository.findById(id)
+                .map(office -> {
+                    office.setName(updatedOffice.getName());
+                    office.setLocation(updatedOffice.getLocation());
+                    office.setFloorCount(updatedOffice.getFloorCount());
+//                    office.setTotalSeatCount(updatedOffice.getTotalSeatCount());
+//                    office.setAvailableSeatCount(updatedOffice.getAvailableSeatCount());
+                    return officeRepository.save(office);
+                })
+                .orElseThrow(() -> new ResourceNotFoundException("Office not found with id " + id));
     }
     @CrossOrigin("http://localhost:3000")
     @DeleteMapping("/{id}")

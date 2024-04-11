@@ -18,15 +18,7 @@ public class Office {
     private Integer availableSeatCount= null;
 
 
-    public Office(int id, String name, String location, int floorCount, int totalSeatCount, Integer availableSeatCount, Set<Floor> floors) {
-        this.id = id;
-        this.name = name;
-        this.location = location;
-        this.floorCount = floorCount;
-        this.totalSeatCount = totalSeatCount;
-        this.availableSeatCount = availableSeatCount;
-        this.floors = floors;
-    }
+
 
     public Set<Floor> getFloors() {
         return floors;
