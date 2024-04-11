@@ -1,0 +1,18 @@
+POST http://localhost:8080/users/register
+Content-Type: application/json
+Content-Length: 98
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "email": "smarankar@gmail.com",
+  "name": "Smaran",
+  "role": "user",
+  "password": "smaran"
+}
+
+<> 2024-04-10T232156.201.json
+
+###
+

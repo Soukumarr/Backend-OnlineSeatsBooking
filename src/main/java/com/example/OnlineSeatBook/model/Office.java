@@ -13,7 +13,9 @@ public class Office {
     private String location;
     private int floorCount;
     private int totalSeatCount;
-    private int availableSeatCount;
+
+
+    private Integer availableSeatCount= null;
 
     public int getId() {
         return id;
@@ -55,11 +57,16 @@ public class Office {
         this.totalSeatCount = totalSeatCount;
     }
 
-    public int getAvailableSeatCount() {
+    public Integer getAvailableSeatCount() {
         return availableSeatCount;
     }
+//make it default null
 
-    public void setAvailableSeatCount(int availableSeatCount) {
-        this.availableSeatCount = availableSeatCount;
+    public void setAvailableSeatCount(Integer availableSeatCount) {
+        if (availableSeatCount == null) {
+            this.availableSeatCount = null;
+        } else {
+            this.availableSeatCount = availableSeatCount;
+        }
     }
 }
