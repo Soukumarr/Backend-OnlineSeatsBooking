@@ -16,6 +16,7 @@ public class Floor {
     private int seatCapacity;
 
     @ManyToOne
+    @JoinColumn(name = "office_id")
     private Office office;
 
     @OneToMany(mappedBy = "floor")
@@ -69,6 +70,17 @@ public class Floor {
         this.seats = new HashSet<>();
     }
 
+
     public Floor() {
     }
+
+// setofficeid
+    public void setOfficeId(Long officeId) {
+        this.office = new Office(officeId);
+    }
+    // getofficeid
+    public Long getOfficeId() {
+        return office.getId();
+    }
+
 }

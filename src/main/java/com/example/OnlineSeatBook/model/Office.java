@@ -10,19 +10,25 @@ import java.util.Set;
 public class Office {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String name;
     private String location;
     private int floorCount;
     private int totalSeatCount;
     private Integer availableSeatCount= null;
 
-
-
-
-    public Set<Floor> getFloors() {
-        return floors;
+    public Office(Long officeId) {
+        this.id = officeId;
     }
+
+    public Office() {
+
+    }
+
+
+//    public Set<Floor> getFloors() {
+//        return floors;
+//    }
 
     public void setFloors(Set<Floor> floors) {
         this.floors = floors;
@@ -32,11 +38,11 @@ public class Office {
     @OneToMany(mappedBy = "office", cascade = CascadeType.REMOVE)
     private Set<Floor> floors;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

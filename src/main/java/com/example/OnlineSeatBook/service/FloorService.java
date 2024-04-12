@@ -5,6 +5,7 @@ import com.example.OnlineSeatBook.repository.FloorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -16,6 +17,11 @@ public class FloorService {
     public FloorService(FloorRepository floorRepository) {
         this.floorRepository = floorRepository;
     }
+
+
+
+
+
 
     // Create (Save) Floor
     public Floor saveFloor(Floor floor) {
@@ -36,9 +42,15 @@ public class FloorService {
     public Floor updateFloor(Floor floor) {
         return floorRepository.save(floor);
     }
-
+    public List<Floor> getFloorsByOfficeId(Long officeId) {
+        return floorRepository.findByOfficeId(officeId);
+    }
     // Delete Floor
     public void deleteFloor(Long id) {
         floorRepository.deleteById(id);
     }
 }
+// deleteFloor by officeId
+//     public void deleteFloorByOfficeId(Long officeId) {
+//         floorRepository.deleteByOfficeId(officeId);
+//     }
