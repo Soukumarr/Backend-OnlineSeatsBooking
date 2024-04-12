@@ -40,6 +40,9 @@ public class Office {
     @OneToMany(mappedBy = "office", cascade = CascadeType.REMOVE)
     private Set<Floor> floors;
 
+    public Office() {
+    }
+
     public int getId() {
         return id;
     }

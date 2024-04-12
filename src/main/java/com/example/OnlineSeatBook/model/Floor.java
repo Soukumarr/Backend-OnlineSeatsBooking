@@ -1,5 +1,6 @@
 package com.example.OnlineSeatBook.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -19,6 +20,7 @@ public class Floor {
     private Office office;
 
     @OneToMany(mappedBy = "floor")
+//    @JsonIgnoreProperties("seats")
     private Set<Seat> seats;
 
     // Getters, setters, and constructors

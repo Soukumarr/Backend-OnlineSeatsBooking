@@ -23,8 +23,8 @@ public class Seat {
         this.id = id;
     }
 
-    public Floor getFloor() {
-        return floor;
+    public Long getFloor() {
+        return floor.getId();
     }
 
     public void setFloor(Floor floor) {
@@ -63,5 +63,16 @@ public class Seat {
     }
 
     public Seat() {
+    }
+
+    @Override
+    public String toString() {
+        return "Seat{" +
+                "id=" + id +
+                ", floor=" + floor +
+                ", seatIndex=" + seatIndex +
+                ", section=" + section +
+                ", isAvailable=" + isAvailable +
+                '}';
     }
 }
