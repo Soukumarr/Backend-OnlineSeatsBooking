@@ -1,9 +1,6 @@
 package com.example.OnlineSeatBook.controller;
 
-import com.example.OnlineSeatBook.config.MyConfiguration;
 import com.example.OnlineSeatBook.model.Floor;
-import com.example.OnlineSeatBook.model.Office;
-import com.example.OnlineSeatBook.repository.OfficeRepository;
 import com.example.OnlineSeatBook.service.FloorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
