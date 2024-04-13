@@ -1,5 +1,6 @@
 package com.example.OnlineSeatBook.controller;
 
+import com.example.OnlineSeatBook.config.MyConfiguration;
 import com.example.OnlineSeatBook.model.Floor;
 import com.example.OnlineSeatBook.model.Office;
 import com.example.OnlineSeatBook.repository.OfficeRepository;
@@ -9,10 +10,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
-@CrossOrigin("http://localhost:3000")
+import static java.lang.Integer.parseInt;
+
+
 @RestController
 @RequestMapping("api/floors")
 public class FloorController {
+
+
 
     @Autowired
     private final FloorService floorService;
@@ -50,9 +55,11 @@ public class FloorController {
         floor.setId(id); // Ensure ID from path matches the Floor object
         return floorService.updateFloor(floor);
     }
-    @CrossOrigin("http://localhost:3000")
+
     @PutMapping("/office/{officeId}/floors/{floorCount}")
     public List<Floor> updateFloorCount(@PathVariable Long officeId, @PathVariable int floorCount) {
+//        // if floorcount in string then convert it into int
+//        floorCount = parseInt(String.valueOf(floorCount));
         List<Floor> floors = floorService.getFloorsByOfficeId(officeId);
         int currentCount = floors.size();
 
@@ -88,6 +95,11 @@ public class FloorController {
     @DeleteMapping("/{id}")
     public void deleteFloor(@PathVariable Long id) {
         floorService.deleteFloor(id);
+    }
+
+    @DeleteMapping("/office/{officeId}")
+    public void deleteFloorByOfficeId(@PathVariable Long officeId) {
+        floorService.deleteFloorByOfficeId(officeId);
     }
 
 

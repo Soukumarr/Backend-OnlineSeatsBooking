@@ -49,8 +49,9 @@ public class FloorService {
     public void deleteFloor(Long id) {
         floorRepository.deleteById(id);
     }
+
+    public void deleteFloorByOfficeId(Long officeId) {
+        floorRepository.deleteByOfficeId(officeId);
+    }
 }
 // deleteFloor by officeId
-//     public void deleteFloorByOfficeId(Long officeId) {
-//         floorRepository.deleteByOfficeId(officeId);
-//     }
