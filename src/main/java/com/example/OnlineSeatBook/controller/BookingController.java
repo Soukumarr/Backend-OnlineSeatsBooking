@@ -12,7 +12,10 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/booking")
+@CrossOrigin("http://localhost:3000")
+
+@RequestMapping("/api/booking/")
+
 public class BookingController {
     @Autowired
     private BookingService bookingService;
@@ -20,6 +23,7 @@ public class BookingController {
     // Create a new booking
     @PostMapping
     public ResponseEntity<Booking> createBooking(@RequestBody BookingDTO booking) {
+        System.out.println(booking.toString());
         Booking createdBooking = bookingService.createBooking(booking);
         return new ResponseEntity<>(createdBooking, HttpStatus.CREATED);
     }
@@ -66,9 +70,9 @@ public class BookingController {
 
     // Get all bookings by date and seat ID
     @GetMapping("/date/{date}/seat/{seatId}")
-    public ResponseEntity<List<BookingDTO>> getBookingsByDateAndSeatId(@PathVariable("date") String dateString, @PathVariable("seatId") Long seatId) {
+    public ResponseEntity<BookingDTO> getBookingsByDateAndSeatId(@PathVariable("date") String dateString, @PathVariable("seatId") int seatId) {
         LocalDate date = LocalDate.parse(dateString);
-        List<BookingDTO> bookings = bookingService.getBookingsBySeatIdAndDate(seatId, date);
+        BookingDTO bookings = bookingService.getBookingsBySeatIdAndDate(seatId, date);
         return new ResponseEntity<>(bookings, HttpStatus.OK);
     }
 

@@ -1,6 +1,9 @@
 package com.example.OnlineSeatBook.dto;
 
+import com.example.OnlineSeatBook.model.Booking;
 import com.example.OnlineSeatBook.model.Floor;
+import com.example.OnlineSeatBook.model.Seat;
+import com.example.OnlineSeatBook.util.Status;
 
 public class SeatDTO{
 
@@ -10,13 +13,27 @@ public class SeatDTO{
     private int section;
     private boolean isAvailable;
 
-    public SeatDTO(int id, Long floor, int seatIndex, int section, boolean isAvailable) {
+    private Status status;
+
+    public SeatDTO(int id, Long floorId, int seatIndex, int section, boolean isAvailable, Status status) {
         this.id = id;
-        this.floorId = floor;
+        this.floorId = floorId;
         this.seatIndex = seatIndex;
         this.section = section;
         this.isAvailable = isAvailable;
+        this.status = status;
     }
+
+    public static SeatDTO convertToDTO(Seat seat) {
+        SeatDTO seatDTO = new SeatDTO();
+        seatDTO.setId(seat.getId());
+        seatDTO.setFloorId(seat.getFloor());
+        seatDTO.setSeatIndex(seat.getSeatIndex());
+        seatDTO.setSection(seat.getSection());
+        seatDTO.setAvailable(seat.isAvailable());
+        return seatDTO;
+    }
+
 
     public SeatDTO() {
 
@@ -60,5 +77,21 @@ public class SeatDTO{
 
     public void setAvailable(boolean available) {
         isAvailable = available;
+    }
+
+    public Long getFloorId() {
+        return floorId;
+    }
+
+    public void setFloorId(Long floorId) {
+        this.floorId = floorId;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }

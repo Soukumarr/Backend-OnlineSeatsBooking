@@ -3,6 +3,7 @@ package com.example.OnlineSeatBook.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -16,7 +17,9 @@ public class Office {
     private int floorCount;
     private int totalSeatCount;
     private Integer availableSeatCount= null;
-
+    //    Removing all the floors in this office if the office gets deleted
+    @OneToMany(mappedBy = "office", cascade = CascadeType.REMOVE)
+    private Set<Floor> floors;
 
     public Office(int id, String name, String location, int floorCount, int totalSeatCount, Integer availableSeatCount, Set<Floor> floors) {
         this.id = id;
@@ -36,9 +39,6 @@ public class Office {
         this.floors = floors;
     }
 
-//    Removing all the floors in this office if the office gets deleted
-    @OneToMany(mappedBy = "office", cascade = CascadeType.REMOVE)
-    private Set<Floor> floors;
 
     public Office() {
     }

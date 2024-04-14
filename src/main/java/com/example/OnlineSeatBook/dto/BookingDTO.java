@@ -1,12 +1,19 @@
 package com.example.OnlineSeatBook.dto;
 
 import com.example.OnlineSeatBook.model.Booking;
+import com.example.OnlineSeatBook.model.Seat;
+import com.example.OnlineSeatBook.model.User;
+import com.example.OnlineSeatBook.repository.UserRepository;
 import com.example.OnlineSeatBook.util.Status;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+@Component
 public class BookingDTO {
+
     private Long userId;
     private Long seatId;
     private LocalDateTime startTime;
@@ -25,9 +32,17 @@ public class BookingDTO {
         return bookingDTO;
     }
 
-    public static Booking convertToEntity(BookingDTO bookingDTO) {
+    public static Booking convertToEntity(BookingDTO bookingDTO, Seat seat, User user) {
         Booking booking = new Booking();
+
+        System.out.println("Start Time : " + bookingDTO.getEndTime());
         // Set other properties as needed
+        booking.setDate(bookingDTO.getDate());
+        booking.setStartTime(bookingDTO.getStartTime());
+        booking.setEndTime(bookingDTO.getEndTime());
+        booking.setStatus(bookingDTO.getStatus());
+        booking.setSeat(seat);
+        booking.setUser(user);
         return booking;
     }
 
@@ -77,5 +92,17 @@ public class BookingDTO {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "BookingDTO{" +
+                "userId=" + userId +
+                ", seatId=" + seatId +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", date=" + date +
+                ", status=" + status +
+                '}';
     }
 }

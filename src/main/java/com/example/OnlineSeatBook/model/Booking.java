@@ -100,4 +100,7 @@ public class Booking {
 
     public Booking() {
     }
+
+    public void getStartTime(LocalDateTime startTime) {
+    }
 }
