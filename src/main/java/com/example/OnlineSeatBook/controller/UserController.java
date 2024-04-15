@@ -1,32 +1,50 @@
 package com.example.OnlineSeatBook.controller;
 
+import com.example.OnlineSeatBook.model.AuthRequest;
 import com.example.OnlineSeatBook.model.User;
+import com.example.OnlineSeatBook.service.JwtService;
 import com.example.OnlineSeatBook.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-@CrossOrigin(origins = "http://localhost:3000")
+
 @RestController
-@RequestMapping("/users")
 public class UserController {
     private final UserService userService;
+    @Autowired
+    private JwtService jwtService;
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
-    @PostMapping("/signin")
+    @PostMapping("/users/signin")
     public ResponseEntity<?> loginUser(@RequestBody User user) {
         Optional<User> foundUser = Optional.ofNullable(userService.findByEmail(user.getEmail()));
 
         if (foundUser.isPresent()) {
             if (foundUser.get().getPassword().equals(user.getPassword())) {
-                return new ResponseEntity<>(foundUser.get(), HttpStatus.OK);
+                Map<String, Object> claims = new HashMap<>();
+                String roles = foundUser.get().getRole();
+                claims.put("roles", roles);
+                String token = jwtService.createToken(claims, user.getEmail());
+                return new ResponseEntity<>(token, HttpStatus.OK);
             } else {
                 return new ResponseEntity<>("Password does not match", HttpStatus.UNAUTHORIZED);
             }
@@ -34,29 +52,56 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
     }
-    @PostMapping("/register")
+
+    @PostMapping("/users/register")
     public ResponseEntity<User> registerUser(@RequestBody User user) {
         User registeredUser = userService.registerUser(user);
         return new ResponseEntity<>(registeredUser, HttpStatus.CREATED);
     }
+
     //getallusers
     @GetMapping("/all")
     public ResponseEntity<Iterable<User>> getAllUsers() {
         Iterable<User> allUsers = userService.getAllUsers();
         return new ResponseEntity<>(allUsers, HttpStatus.OK);
     }
-    @PostMapping("/resetpassword")
-    public ResponseEntity<?> resetPassword(@RequestBody Map<String, String> request) {
-        String email = request.get("email");
-        String newPassword = request.get("newPassword");
-        User user = userService.resetPassword(email, newPassword);
 
-        if (user != null) {
-            return new ResponseEntity<>(HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
+    @PreAuthorize("hasAuthority('ROLE_USER')")
+    @PutMapping("/auth/user/resetpassword")
+    public ResponseEntity<?> resetPassword(@RequestBody Map<String, String> request,@RequestHeader("Authorization") String token) {
+
+        String newPassword = request.get("newPassword");
+
+        String tokenEmail = null;
+        if (token != null) {
+            tokenEmail = jwtService.extractUsername(token.replace("Bearer ", ""));
         }
+        if (tokenEmail != null) {
+            User user = userService.resetPassword(tokenEmail, newPassword);
+
+            if (user != null) {
+                return new ResponseEntity<>(HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
+            }
+        } else {
+            return new ResponseEntity<>("Invalid token", HttpStatus.UNAUTHORIZED);
+        }
+
     }
 
+    @PostMapping("/generateToken")
+    public String authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
+        if (authentication.isAuthenticated()) {
+            //added
+            //UserDetails userDetails = userService.loadUserByUsername(authRequest.getUsername());
+            return jwtService.generateToken(authRequest.getUsername());
+            //return jwtService.generateToken(userDetails);
+        } else {
+            throw new UsernameNotFoundException("invalid user request !");
+        }
 
+
+    }
 }
