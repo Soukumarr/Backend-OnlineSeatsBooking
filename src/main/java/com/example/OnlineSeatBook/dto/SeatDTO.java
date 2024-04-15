@@ -39,6 +39,15 @@ public class SeatDTO{
 
     }
 
+    public static Seat convertToEntity(SeatDTO seatDTO, Floor floor) {
+        Seat seat = new Seat();
+        seat.setSection(seatDTO.getSection());
+        seat.setSeatIndex(seatDTO.getSeatIndex());
+        seat.setAvailable(true);
+        seat.setFloor(floor);
+        return seat;
+    }
+
     public int getId() {
         return id;
     }

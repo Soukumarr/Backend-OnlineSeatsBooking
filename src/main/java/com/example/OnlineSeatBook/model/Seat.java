@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 @Table(name = "seats")
 public class Seat {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @ManyToOne
     private Floor floor;
@@ -65,14 +65,4 @@ public class Seat {
     public Seat() {
     }
 
-    @Override
-    public String toString() {
-        return "Seat{" +
-                "id=" + id +
-                ", floor=" + floor +
-                ", seatIndex=" + seatIndex +
-                ", section=" + section +
-                ", isAvailable=" + isAvailable +
-                '}';
-    }
 }

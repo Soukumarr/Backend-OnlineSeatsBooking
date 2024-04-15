@@ -3,7 +3,9 @@ package com.example.OnlineSeatBook.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -21,7 +23,7 @@ public class Floor {
 
     @OneToMany(mappedBy = "floor")
 //    @JsonIgnoreProperties("seats")
-    private Set<Seat> seats;
+    private List<Seat> seats;
 
     // Getters, setters, and constructors
     public Long getId() {
@@ -56,11 +58,11 @@ public class Floor {
         this.seatCapacity = seatCapacity;
     }
 
-    public Set<Seat> getSeats() {
+    public List<Seat> getSeats() {
         return seats;
     }
 
-    public void setSeats(Set<Seat> seats) {
+    public void setSeats(List<Seat> seats) {
         this.seats = seats;
     }
 
@@ -68,9 +70,20 @@ public class Floor {
         this.office = office;
         this.floorNumber = floorNumber;
         this.seatCapacity = seatCapacity;
-        this.seats = new HashSet<>();
+        this.seats = new ArrayList<>();
     }
 
     public Floor() {
+    }
+
+    @Override
+    public String toString() {
+        return "Floor{" +
+                "id=" + id +
+                ", floorNumber=" + floorNumber +
+                ", seatCapacity=" + seatCapacity +
+                ", office=" + office +
+                ", seats=" + seats +
+                '}';
     }
 }
