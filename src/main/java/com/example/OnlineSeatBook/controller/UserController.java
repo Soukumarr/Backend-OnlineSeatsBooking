@@ -90,6 +90,29 @@ public class UserController {
 
     }
 
+    @PreAuthorize("hasAuthority('ROLE_USER')")
+    @PutMapping("/auth/user/editProfile")
+    public ResponseEntity<?> editProfile(@RequestBody User updatedUserDetails, @RequestHeader("Authorization") String token) {
+        String email = jwtService.extractUsername(token.replace("Bearer ", ""));
+        Optional<User> userOptional = Optional.ofNullable(userService.findByEmail(email));
+
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            user.setName(updatedUserDetails.getName());
+            user.setPhone(updatedUserDetails.getPhone());
+            user.setAddress(updatedUserDetails.getAddress());
+            userService.updateUser(user);
+
+            // Invalidate the token to log the user out
+            // This can be done by adding the token to a token blacklist,
+            // or by changing the user's sign-in credentials (e.g., changing a last sign-in timestamp)
+
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PostMapping("/generateToken")
     public String authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));

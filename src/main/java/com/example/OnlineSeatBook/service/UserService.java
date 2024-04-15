@@ -48,6 +48,19 @@ public class UserService implements UserDetailsService {
         }
         return null;
     }
+    public User updateUser(User user) {
+        Optional<User> userOptional = userRepository.findByEmail(user.getEmail());
+
+        if (userOptional.isPresent()) {
+            User existingUser = userOptional.get();
+            existingUser.setName(user.getName());
+            existingUser.setPhone(user.getPhone());
+            existingUser.setAddress(user.getAddress());
+            return userRepository.save(existingUser);
+        } else {
+            throw new UsernameNotFoundException("User not found");
+        }
+    }
 //    public String addUser(User userInfo) {
 //        userInfo.setPassword(encoder.encode(userInfo.getPassword()));
 //        userRepository.save(userInfo);
