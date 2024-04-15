@@ -1,16 +1,14 @@
 package com.example.OnlineSeatBook.service;
 
-import com.example.OnlineSeatBook.dto.FloorDTO;
 import com.example.OnlineSeatBook.dto.SeatDTO;
 import com.example.OnlineSeatBook.model.Floor;
 import com.example.OnlineSeatBook.model.Seat;
-import com.example.OnlineSeatBook.repository.FloorRepository;
 import com.example.OnlineSeatBook.repository.SeatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class SeatService {
@@ -33,5 +31,15 @@ public class SeatService {
         }
         Seat  seat = SeatDTO.convertToEntity(seatDTO, currentFloor);
         return SeatDTO.convertToDTO(seatRepository.save(seat));
+    }
+
+    public void deleteSeat(Long seatId) {
+        seatRepository.deleteById(seatId);
+    }
+
+    public List<SeatDTO> getAll() {
+        return seatRepository.findAll().stream().map(
+                SeatDTO::convertToDTO
+        ).collect(Collectors.toList());
     }
 }
