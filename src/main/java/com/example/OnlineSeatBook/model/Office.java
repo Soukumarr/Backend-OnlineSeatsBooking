@@ -3,23 +3,46 @@ package com.example.OnlineSeatBook.model;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table (name = "office")
 public class Office {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String name;
     private String location;
     private int floorCount;
     private int totalSeatCount;
-    private int availableSeatCount;
+    private Integer availableSeatCount= null;
 
-    public int getId() {
+    public Office(Long officeId) {
+        this.id = officeId;
+    }
+
+    public Office() {
+
+    }
+
+
+//    public Set<Floor> getFloors() {
+//        return floors;
+//    }
+
+    public void setFloors(Set<Floor> floors) {
+        this.floors = floors;
+    }
+
+    //    Removing all the floors in this office if the office gets deleted
+    @OneToMany(mappedBy = "office", cascade = CascadeType.REMOVE)
+    private Set<Floor> floors;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -55,11 +78,16 @@ public class Office {
         this.totalSeatCount = totalSeatCount;
     }
 
-    public int getAvailableSeatCount() {
+    public Integer getAvailableSeatCount() {
         return availableSeatCount;
     }
+//make it default null
 
-    public void setAvailableSeatCount(int availableSeatCount) {
-        this.availableSeatCount = availableSeatCount;
+    public void setAvailableSeatCount(Integer availableSeatCount) {
+        if (availableSeatCount == null) {
+            this.availableSeatCount = null;
+        } else {
+            this.availableSeatCount = availableSeatCount;
+        }
     }
 }

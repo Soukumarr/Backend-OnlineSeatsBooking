@@ -8,7 +8,7 @@ public class SwapRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-   @OneToOne
+    @OneToOne
     @JoinColumn(name = "user_id_1")
     private User user1;
     @OneToOne

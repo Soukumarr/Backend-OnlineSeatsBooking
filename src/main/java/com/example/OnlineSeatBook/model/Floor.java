@@ -10,21 +10,24 @@ import java.util.Set;
 public class Floor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
+
+    private int floorNumber;
+    private int seatCapacity;
+
     @ManyToOne
     @JoinColumn(name = "office_id")
     private Office office;
-    private int floorNumber;
-    private int seatCapacity;
-    @ManyToMany(mappedBy = "floors")
+
+    @OneToMany(mappedBy = "floor")
     private Set<Seat> seats;
 
     // Getters, setters, and constructors
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -67,6 +70,17 @@ public class Floor {
         this.seats = new HashSet<>();
     }
 
+
     public Floor() {
     }
+
+    // setofficeid
+    public void setOfficeId(Long officeId) {
+        this.office = new Office(officeId);
+    }
+    // getofficeid
+    public Long getOfficeId() {
+        return office.getId();
+    }
+
 }
