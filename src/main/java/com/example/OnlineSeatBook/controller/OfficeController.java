@@ -1,6 +1,7 @@
 package com.example.OnlineSeatBook.controller;
 
 import com.example.OnlineSeatBook.dto.FloorDTO;
+import com.example.OnlineSeatBook.dto.OfficeDTO;
 import com.example.OnlineSeatBook.exception.ResourceNotFoundException;
 import com.example.OnlineSeatBook.model.Office;
 import com.example.OnlineSeatBook.repository.OfficeRepository;
@@ -20,8 +21,12 @@ public class OfficeController {
     OfficeService officeService;
     @CrossOrigin("http://localhost:3000")
     @GetMapping
-    public List<Office> getAllOffices() {
-        return officeRepository.findAll();
+    public List<OfficeDTO> getAllOffices() {
+        List<Office> offices = officeRepository.findAll();
+        System.out.println(offices); // This will print the list of offices to the console
+        return offices.stream().map(
+                (OfficeDTO::convertToEntity)
+        ).toList();
     }
     @CrossOrigin("http://localhost:3000")
     @PostMapping

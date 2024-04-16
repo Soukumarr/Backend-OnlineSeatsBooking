@@ -5,44 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="539f0be5-f369-43ac-a210-ec0244298089" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/controller/BookingController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/controller/LayoutController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/controller/SeatController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/dto/BookingDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/dto/FloorDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/dto/SeatDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/dto/dtoMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/repository/BookingRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/repository/SeatRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/security/WebConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/service/BookingService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/service/LayoutService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/service/OfficeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/service/SeatService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/util/SortByIndex.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/util/Status.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/dto/OfficeDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/config/CorsConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/controller/BookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/controller/BookingController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/controller/OfficeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/controller/OfficeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/model/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/model/Booking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/model/Floor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/model/Floor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/model/Office.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/model/Office.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/model/Seat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/model/Seat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/service/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/service/BookingService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.OnlineSeatBookApplication.executor": "Run",
-    "git-widget-placeholder": "Merging security"
+    "git-widget-placeholder": "security"
   }
 }]]></component>
   <component name="RunManager">

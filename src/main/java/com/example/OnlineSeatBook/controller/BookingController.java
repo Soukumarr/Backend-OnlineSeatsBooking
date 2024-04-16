@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin("http://localhost:3000")
@@ -33,6 +34,12 @@ public class BookingController {
     public ResponseEntity<List<BookingDTO>> getAllBookings() {
         List<BookingDTO> bookings = bookingService.getAllBookings();
         return new ResponseEntity<>(bookings, HttpStatus.OK);
+    }
+
+
+    @GetMapping("/dashboard")
+    public List<Map<String, Object>> getAllBookingDetails() {
+        return bookingService.getAllBookingDetails();
     }
 
     // Get a booking by ID
