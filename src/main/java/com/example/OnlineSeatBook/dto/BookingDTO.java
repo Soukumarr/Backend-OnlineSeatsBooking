@@ -3,9 +3,7 @@ package com.example.OnlineSeatBook.dto;
 import com.example.OnlineSeatBook.model.Booking;
 import com.example.OnlineSeatBook.model.Seat;
 import com.example.OnlineSeatBook.model.User;
-import com.example.OnlineSeatBook.repository.UserRepository;
 import com.example.OnlineSeatBook.util.Status;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -14,6 +12,9 @@ import java.time.LocalDateTime;
 @Component
 public class BookingDTO {
 
+
+
+    private Long id;
     private Long userId;
     private Long seatId;
     private LocalDateTime startTime;
@@ -29,6 +30,7 @@ public class BookingDTO {
         bookingDTO.setEndTime(booking.getEndTime());
         bookingDTO.setDate(booking.getDate());
         bookingDTO.setStatus(booking.getStatus());
+        bookingDTO.setId(booking.getId());
         return bookingDTO;
     }
 
@@ -44,6 +46,14 @@ public class BookingDTO {
         booking.setSeat(seat);
         booking.setUser(user);
         return booking;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getUserId() {

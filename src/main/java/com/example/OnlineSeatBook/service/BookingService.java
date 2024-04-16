@@ -10,6 +10,7 @@ import com.example.OnlineSeatBook.repository.BookingRepository;
 import com.example.OnlineSeatBook.repository.FloorRepository;
 import com.example.OnlineSeatBook.repository.SeatRepository;
 import com.example.OnlineSeatBook.repository.UserRepository;
+import com.example.OnlineSeatBook.util.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -108,4 +109,16 @@ public class BookingService {
     }
 
 
+    public boolean cancelRequest(Long id) {
+
+        Booking booking = bookingRepository.findById(id).orElse(null);
+
+        if ( !booking.equals(null)){
+            booking.setStatus(Status.CANCEL);
+            bookingRepository.save(booking);
+            return true;
+        }else {
+            return false;
+        }
+    }
 }

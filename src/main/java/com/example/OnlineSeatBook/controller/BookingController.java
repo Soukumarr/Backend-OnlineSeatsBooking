@@ -75,6 +75,16 @@ public class BookingController {
         }
     }
 
+    @DeleteMapping("/cancel/{id}")
+    public ResponseEntity<Void> cancelBookingRequest(@PathVariable Long id) {
+        boolean deleted = bookingService.cancelRequest(id);
+        if (deleted) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     // Get all bookings by date and seat ID
     @GetMapping("/date/{date}/seat/{seatId}")
     public ResponseEntity<BookingDTO> getBookingsByDateAndSeatId(@PathVariable("date") String dateString, @PathVariable("seatId") int seatId) {

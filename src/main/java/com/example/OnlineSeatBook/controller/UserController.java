@@ -42,6 +42,8 @@ public class UserController {
             if (foundUser.get().getPassword().equals(user.getPassword())) {
                 Map<String, Object> claims = new HashMap<>();
                 String roles = foundUser.get().getRole();
+                int u_id = foundUser.get().getId();
+                claims.put("id",u_id);
                 claims.put("roles", roles);
                 String token = jwtService.createToken(claims, user.getEmail());
                 return new ResponseEntity<>(token, HttpStatus.OK);

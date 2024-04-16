@@ -78,7 +78,7 @@ public class LayoutService {
         }}
 
         ArrayList<Seat> allSeats = getAllSeats(officeId,floorId);
-        System.out.println(allSeats.toString());
+//        System.out.println(allSeats.toString());
 //        Put each seat form the allSeats array in the appropriate section( 0 - 5 )
         for ( int i=0; i<6;i++) {
             for (Seat seat : allSeats){
@@ -89,7 +89,9 @@ public class LayoutService {
 //                   Get the status of seat and update in the SeatDTO
                     BookingDTO booking = bookingService.getBookingsBySeatIdAndDate(seat.getId(), date);
                     if (booking != null){
-                    seatDTO.setStatus(booking.getStatus());
+                        seatDTO.setBookingId(booking.getId());
+                        System.out.println("Booking Present : "+ seatDTO.getBookingId());
+                        seatDTO.setStatus(booking.getStatus());
                     }else{
                         seatDTO.setStatus(Status.AVAILABLE);
                     }

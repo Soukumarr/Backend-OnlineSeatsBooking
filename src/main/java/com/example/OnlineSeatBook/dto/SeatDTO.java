@@ -15,6 +15,9 @@ public class SeatDTO{
 
     private Status status;
 
+    private Long bookingId;
+
+
     public SeatDTO(int id, Long floorId, int seatIndex, int section, boolean isAvailable, Status status) {
         this.id = id;
         this.floorId = floorId;
@@ -46,6 +49,14 @@ public class SeatDTO{
         seat.setAvailable(true);
         seat.setFloor(floor);
         return seat;
+    }
+
+    public Long getBookingId() {
+        return bookingId;
+    }
+
+    public void setBookingId(Long bookingId) {
+        this.bookingId = bookingId;
     }
 
     public int getId() {
@@ -102,5 +113,18 @@ public class SeatDTO{
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "SeatDTO{" +
+                "id=" + id +
+                ", floorId=" + floorId +
+                ", seatIndex=" + seatIndex +
+                ", section=" + section +
+                ", isAvailable=" + isAvailable +
+                ", status=" + status +
+                ", bookingId=" + bookingId +
+                '}';
     }
 }

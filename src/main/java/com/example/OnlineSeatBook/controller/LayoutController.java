@@ -42,6 +42,8 @@ public class LayoutController {
             return service.getDefaultMap();
         }
         LocalDate date = LocalDate.parse(dateString);
+        List<List<SeatDTO>> floorMap = service.getFloorMap(officeId, floorId, date);
+        System.out.println(floorMap.get(0).get(17).toString());
         return service.getFloorMap(officeId, floorId, date);
     }
 }
