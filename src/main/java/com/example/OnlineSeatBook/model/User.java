@@ -11,6 +11,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table (name = "users")
 public class User {
+
+//    TODO: Change the Type of ID to Long
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

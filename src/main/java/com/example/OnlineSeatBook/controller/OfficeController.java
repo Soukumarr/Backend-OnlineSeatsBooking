@@ -1,8 +1,10 @@
 package com.example.OnlineSeatBook.controller;
 
+import com.example.OnlineSeatBook.dto.FloorDTO;
 import com.example.OnlineSeatBook.exception.ResourceNotFoundException;
 import com.example.OnlineSeatBook.model.Office;
 import com.example.OnlineSeatBook.repository.OfficeRepository;
+import com.example.OnlineSeatBook.service.OfficeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +15,9 @@ import java.util.List;
 public class OfficeController {
     @Autowired
     private OfficeRepository officeRepository;
+
+    @Autowired
+    OfficeService officeService;
     @CrossOrigin("http://localhost:3000")
     @GetMapping
     public List<Office> getAllOffices() {
@@ -42,5 +47,10 @@ public class OfficeController {
     @DeleteMapping("/{id}")
     public void deleteOffice(@PathVariable int id) {
         officeRepository.deleteById(id);
+    }
+    @CrossOrigin
+    @GetMapping("/{officeId}/getFloors")
+    public List<FloorDTO> getAllFloors(@PathVariable int officeId) {
+        return officeService.getAllFloors(officeId);
     }
 }

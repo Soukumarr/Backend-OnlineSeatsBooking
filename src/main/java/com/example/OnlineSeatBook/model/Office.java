@@ -3,6 +3,10 @@ package com.example.OnlineSeatBook.model;
 
 import jakarta.persistence.*;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
+
 import java.util.Set;
 
 @Entity
@@ -15,7 +19,7 @@ public class Office {
     private String location;
     private int floorCount;
     private int totalSeatCount;
-    private Integer availableSeatCount= null;
+    private int availableSeatCount;
 
     public Office(Long officeId) {
         this.id = officeId;
@@ -25,18 +29,28 @@ public class Office {
 
     }
 
+    public Office(Long id, String name, String location, int floorCount, int totalSeatCount, Integer availableSeatCount, List<Floor> floors) {
+        this.id = id;
+        this.name = name;
+        this.location = location;
+        this.floorCount = floorCount;
+        this.totalSeatCount = totalSeatCount;
+        this.availableSeatCount = availableSeatCount;
+        this.floors = floors;
+    }
+
 
 //    public Set<Floor> getFloors() {
 //        return floors;
 //    }
 
-    public void setFloors(Set<Floor> floors) {
+    public void setFloors(List<Floor> floors) {
         this.floors = floors;
     }
 
     //    Removing all the floors in this office if the office gets deleted
     @OneToMany(mappedBy = "office", cascade = CascadeType.REMOVE)
-    private Set<Floor> floors;
+    private List<Floor> floors;
 
     public Long getId() {
         return id;
@@ -85,9 +99,13 @@ public class Office {
 
     public void setAvailableSeatCount(Integer availableSeatCount) {
         if (availableSeatCount == null) {
-            this.availableSeatCount = null;
+            this.availableSeatCount = 0;
         } else {
             this.availableSeatCount = availableSeatCount;
         }
+    }
+
+    public List<Floor> getFloors() {
+        return this.floors;
     }
 }

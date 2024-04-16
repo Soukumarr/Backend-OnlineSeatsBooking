@@ -4,17 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="86c57b98-b593-473a-aff4-1f4f56c7a03f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/755a7fec-a6a3-452a-8d5f-2526c36e8ea5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/755a7fec-a6a3-452a-8d5f-2526c36e8ea5.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/755a7fec-a6a3-452a-8d5f-2526c36e8ea5/storage_v2/_src_/database/OnlineSeatBooking.IQIuMQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/755a7fec-a6a3-452a-8d5f-2526c36e8ea5/storage_v2/_src_/database/OnlineSeatBooking.IQIuMQ/schema/public.abK9xQ.meta" afterDir="false" />
+    <list default="true" id="539f0be5-f369-43ac-a210-ec0244298089" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/controller/BookingController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/controller/LayoutController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/controller/SeatController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/dto/BookingDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/dto/FloorDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/dto/SeatDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/dto/dtoMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/repository/BookingRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/repository/SeatRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/security/WebConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/service/BookingService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/service/LayoutService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/service/OfficeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/service/SeatService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/util/SortByIndex.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/util/Status.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/OnlineSeatBookApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/OnlineSeatBookApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/config/CorsConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/model/CancellationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/model/CancellationRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/controller/OfficeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/controller/OfficeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/model/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/model/Booking.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/model/Floor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/model/Floor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/model/Office.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/model/Office.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/model/Seat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/model/Seat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/model/SwapRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/model/SwapRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,135 +39,33 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Interface" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;SmaranKar&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Soukumarr/Backend-OnlineSeatsBooking.git&quot;,
-    &quot;accountId&quot;: &quot;29b9619a-73db-449d-b008-4d1772378b6d&quot;
-  }
-}</component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 0
-}</component>
-  <component name="ProjectId" id="2ev04t7evZTbNaAJpC1WEYvnvZq" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.OnlineSeatBookApplication.executor": "Run",
-    "git-widget-placeholder": "895be019",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/skar/Desktop/Backend/Backend-OnlineSeatsBooking/src/main/java/com/example/OnlineSeatBook/service",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.new.ui",
-    "vue.rearranger.settings.migration": "true"
-  },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
-    ]
+    "Application.OnlineSeatBookApplication.executor": "Run",
+    "git-widget-placeholder": "Merging security"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/service" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/controller" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/repository" />
-    </key>
-    <key name="ExtractSuperBase.RECENT_KEYS">
-      <recent name="com.example.OnlineSeatBook.service" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.example.OnlineSeatBook.service" />
-      <recent name="com.example.OnlineSeatBook.model" />
-      <recent name="com.example.OnlineSeatBook.config" />
-    </key>
-  </component>
   <component name="RunManager">
-    <configuration name="OnlineSeatBookApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+    <configuration name="OnlineSeatBookApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.OnlineSeatBook.OnlineSeatBookApplication" />
       <module name="OnlineSeatBook" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.OnlineSeatBook.OnlineSeatBookApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.OnlineSeatBook.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.OnlineSeatBookApplication" />
+      </list>
+    </recent_temporary>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
-      </set>
-    </attachedChunks>
-  </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="86c57b98-b593-473a-aff4-1f4f56c7a03f" name="Changes" comment="" />
-      <created>1712769557242</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1712769557242</updated>
-      <workItem from="1712769558318" duration="41000" />
-      <workItem from="1712769701428" duration="8936000" />
-      <workItem from="1712814763500" duration="2316000" />
-      <workItem from="1712817736148" duration="99000" />
-      <workItem from="1712825184927" duration="7250000" />
-      <workItem from="1712951858110" duration="2976000" />
-      <workItem from="1712987920923" duration="14627000" />
-      <workItem from="1713101334540" duration="9846000" />
-      <workItem from="1713158389589" duration="9570000" />
-      <workItem from="1713173540325" duration="5710000" />
-    </task>
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="org.springframework.security.core.userdetails.UsernameNotFoundException" package="org.springframework.security.core.userdetails" />
-          <option name="timeStamp" value="1" />
-        </breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
