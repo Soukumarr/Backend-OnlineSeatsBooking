@@ -80,10 +80,11 @@ public class LayoutService {
         ArrayList<Seat> allSeats = getAllSeats(officeId,floorId);
 //        System.out.println(allSeats.toString());
 //        Put each seat form the allSeats array in the appropriate section( 0 - 5 )
-        for ( int i=0; i<6;i++) {
+//        for ( int i=0; i<6;i++) {
             for (Seat seat : allSeats){
-                if(seat.getSection() == i+1) {
+//                if(seat.getSection() == i+1) {
 //                    System.out.println(seat.toString());
+                System.out.println("called! SEAT PRESENT ");
                     SeatDTO seatDTO = SeatDTO.convertToDTO(seat);
 
 //                   Get the status of seat and update in the SeatDTO
@@ -95,13 +96,13 @@ public class LayoutService {
                     }else{
                         seatDTO.setStatus(Status.AVAILABLE);
                     }
-                    seatMap.get(i).set( seat.getSeatIndex(), seatDTO);         // Use Set and not Add to replace null
+                    seatMap.get(seat.getSection()-1).set( seat.getSeatIndex(), seatDTO);         // Use Set and not Add to replace null
 //                    System.out.println(seatMap.get(j).add(seat));
-                }
+//                }
             }
 //            System.out.println("Size Of "+i+ " "+ seatMap.get(i).size());
-        }
-        System.out.println(seatMap.toString());
+//        }
+        System.out.println(seatMap);
         return seatMap;
     }
 

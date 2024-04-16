@@ -115,16 +115,4 @@ public class SeatDTO{
         this.status = status;
     }
 
-    @Override
-    public String toString() {
-        return "SeatDTO{" +
-                "id=" + id +
-                ", floorId=" + floorId +
-                ", seatIndex=" + seatIndex +
-                ", section=" + section +
-                ", isAvailable=" + isAvailable +
-                ", status=" + status +
-                ", bookingId=" + bookingId +
-                '}';
-    }
 }
