@@ -65,6 +65,7 @@ public class BookingService {
             details.put("officename", floor.getOffice().getName());
             details.put("location", floor.getOffice().getLocation());
             details.put("username", booking.getUser().getName());
+            details.put("status", booking.getStatus());
             allBookingDetails.add(details);
         }
         return allBookingDetails;
