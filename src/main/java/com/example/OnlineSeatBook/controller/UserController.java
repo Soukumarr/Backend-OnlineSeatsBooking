@@ -11,13 +11,17 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 
@@ -34,29 +38,56 @@ public class UserController {
         this.userService = userService;
     }
 
+//    @PostMapping("/users/signin")
+//    public ResponseEntity<?> loginUser(@RequestBody User user) {
+//        Optional<User> foundUser = Optional.ofNullable(userService.findByEmail(user.getEmail()));
+//
+//        if (foundUser.isPresent()) {
+//            if (foundUser.get().getPassword().equals(user.getPassword())) {
+//                Map<String, Object> claims = new HashMap<>();
+//                String roles = foundUser.get().getRole();
+//                int u_id = foundUser.get().getId();
+//                claims.put("id",u_id);
+//                claims.put("roles", roles);
+//                String token = jwtService.createToken(claims, user.getEmail());
+//                return new ResponseEntity<>(token, HttpStatus.OK);
+//            } else {
+//                return new ResponseEntity<>("Password does not match", HttpStatus.UNAUTHORIZED);
+//            }
+//        } else {
+//            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+//        }
+//    }
+
     @PostMapping("/users/signin")
     public ResponseEntity<?> loginUser(@RequestBody User user) {
-        Optional<User> foundUser = Optional.ofNullable(userService.findByEmail(user.getEmail()));
-
-        if (foundUser.isPresent()) {
-            if (foundUser.get().getPassword().equals(user.getPassword())) {
+        //Optional<User> foundUser = Optional.ofNullable(userService.findByEmail(user.getEmail()));
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword()));
+        if (authentication.isAuthenticated()) {
                 Map<String, Object> claims = new HashMap<>();
-                String roles = foundUser.get().getRole();
-                int u_id = foundUser.get().getId();
+            String role = authentication.getAuthorities().stream()
+                    .map(GrantedAuthority::getAuthority)
+                    .findFirst()
+                    .orElse(null);
+            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+            User userFromDb = userService.findByEmail(userDetails.getUsername());
+            int u_id = userFromDb.getId();
                 claims.put("id",u_id);
-                claims.put("roles", roles);
+                claims.put("roles", role);
                 String token = jwtService.createToken(claims, user.getEmail());
                 return new ResponseEntity<>(token, HttpStatus.OK);
-            } else {
-                return new ResponseEntity<>("Password does not match", HttpStatus.UNAUTHORIZED);
             }
-        } else {
-            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        else {
+            throw new UsernameNotFoundException("invalid user request !");
         }
     }
 
     @PostMapping("/users/register")
     public ResponseEntity<User> registerUser(@RequestBody User user) {
+        User existingUser = userService.findByEmail(user.getEmail());
+        if (existingUser != null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         User registeredUser = userService.registerUser(user);
         return new ResponseEntity<>(registeredUser, HttpStatus.CREATED);
     }
