@@ -58,6 +58,11 @@ public class UserController {
 //            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 //        }
 //    }
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @GetMapping("/hello")
+    public String hello() {
+        return "Hello World";
+    }
 
     @PostMapping("/users/signin")
     public ResponseEntity<?> loginUser(@RequestBody User user) {
@@ -157,18 +162,17 @@ public class UserController {
         }
     }
 
-    @PostMapping("/generateToken")
-    public String authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
-        if (authentication.isAuthenticated()) {
-            //added
-            //UserDetails userDetails = userService.loadUserByUsername(authRequest.getUsername());
-            return jwtService.generateToken(authRequest.getUsername());
-            //return jwtService.generateToken(userDetails);
-        } else {
-            throw new UsernameNotFoundException("invalid user request !");
-        }
+//    @PostMapping("/generateToken")
+//    public String authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
+//        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
+//        if (authentication.isAuthenticated()) {
+//            //added
+//            //UserDetails userDetails = userService.loadUserByUsername(authRequest.getUsername());
+//            return jwtService.generateToken(authRequest.getUsername());
+//            //return jwtService.generateToken(userDetails);
+//        } else {
+//            throw new UsernameNotFoundException("invalid user request !");
+//        }
 
 
     }
-}

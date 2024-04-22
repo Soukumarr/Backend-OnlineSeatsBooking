@@ -7,6 +7,7 @@ import com.example.OnlineSeatBook.model.Office;
 import com.example.OnlineSeatBook.repository.OfficeRepository;
 import com.example.OnlineSeatBook.service.OfficeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,20 +21,22 @@ public class OfficeController {
     @Autowired
     OfficeService officeService;
     @CrossOrigin("http://localhost:3000")
+    @PreAuthorize("hasAnyAuthority('ROLE_USER','ROLE_ADMIN')")
     @GetMapping
-    public List<OfficeDTO> getAllOffices() {
+    public List<OfficeDTO> getAllOffices(@RequestHeader("Authorization") String token){
         List<Office> offices = officeRepository.findAll();
         System.out.println(offices); // This will print the list of offices to the console
         return offices.stream().map(
                 (OfficeDTO::convertToEntity)
         ).toList();
     }
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @CrossOrigin("http://localhost:3000")
     @PostMapping
     public Office createOffice(@RequestBody Office office) {
         return officeRepository.save(office);
     }
-
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @CrossOrigin("http://localhost:3000")
     @PutMapping("/{id}")
     public Office updateOffice(@PathVariable int id, @RequestBody Office updatedOffice) {
@@ -48,12 +51,14 @@ public class OfficeController {
                 })
                 .orElseThrow(() -> new ResourceNotFoundException("Office not found with id " + id));
     }
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @CrossOrigin("http://localhost:3000")
     @DeleteMapping("/{id}")
     public void deleteOffice(@PathVariable int id) {
         officeRepository.deleteById(id);
     }
     @CrossOrigin
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/{officeId}/getFloors")
     public List<FloorDTO> getAllFloors(@PathVariable int officeId) {
         return officeService.getAllFloors(officeId);
