@@ -14,6 +14,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -30,7 +31,7 @@ public class UserController {
     private final UserService userService;
     @Autowired
     private JwtService jwtService;
-
+    private BCryptPasswordEncoder encoder=new BCryptPasswordEncoder(12);
     @Autowired
     private AuthenticationManager authenticationManager;
 
@@ -93,6 +94,7 @@ public class UserController {
         if (existingUser != null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+        user.setPassword(encoder.encode(user.getPassword()));
         User registeredUser = userService.registerUser(user);
         return new ResponseEntity<>(registeredUser, HttpStatus.CREATED);
     }
