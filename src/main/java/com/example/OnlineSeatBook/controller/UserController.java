@@ -146,6 +146,17 @@ public class UserController {
         }
     }
 
+    @GetMapping("/auth/user/profile")
+    public ResponseEntity<User> getUserProfile(@RequestHeader("Authorization") String token) {
+        String tokenEmail = jwtService.extractUsername(token.replace("Bearer ", ""));
+        User user = userService.findByEmail(tokenEmail);
+        if (user != null) {
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PostMapping("/generateToken")
     public String authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
