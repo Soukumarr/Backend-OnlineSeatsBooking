@@ -14,11 +14,12 @@ import com.example.OnlineSeatBook.util.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.awt.print.Book;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static com.example.OnlineSeatBook.dto.BookingDTO.convertToDTO;
@@ -65,7 +66,9 @@ public class BookingService {
             details.put("officename", floor.getOffice().getName());
             details.put("location", floor.getOffice().getLocation());
             details.put("username", booking.getUser().getName());
+
             details.put("status", booking.getStatus());
+            details.put(("status"), booking.getStatus());
             allBookingDetails.add(details);
         }
         return allBookingDetails;
@@ -107,6 +110,33 @@ public class BookingService {
             return null;
         }
         return convertToDTO(booking);
+    }
+
+    public String updateBookingsOnExpiring() {
+//        final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        DateTimeFormatter dateformatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH-mm-ss");
+        LocalDateTime dateTime = LocalDateTime.now();
+        String today = dateTime.format(dateformatter) + ":" + dateTime.format(timeFormatter);
+        System.out.println("Today is " + today);
+
+//        get all bookings where time date is today
+
+        List<Booking> bookingList = bookingRepository.findAllByDate(LocalDate.now()).stream().map(
+                (booking) ->{
+//                        System.out.println("BookingID: " + booking.getId() + "  End Time : " + booking.getEndTime().format(timeFormatter));
+//                        String currentHour = LocalDateTime.now().format(timeFormatter).substring(0,2);
+                    String currentHour = "15";
+                        String endHour = booking.getEndTime().format(timeFormatter).substring(0,2);
+                        if (  Integer.parseInt(currentHour) > Integer.parseInt(endHour) && booking.getStatus()!=Status.EXPIRED){
+                            booking.setStatus(Status.EXPIRED);
+                            bookingRepository.save(booking);
+                            System.out.println("Updated an expired Booking");
+                        }
+                    return booking;
+                }
+        ).toList();
+        return null;
     }
 
 
