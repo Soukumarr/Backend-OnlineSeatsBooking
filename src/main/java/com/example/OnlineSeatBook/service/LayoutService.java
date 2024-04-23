@@ -88,11 +88,11 @@ public class LayoutService {
                     SeatDTO seatDTO = SeatDTO.convertToDTO(seat);
 
 //                   Get the status of seat and update in the SeatDTO
-                    BookingDTO booking = bookingService.getBookingsBySeatIdAndDate(seat.getId(), date);
-                    if (booking != null){
-                        seatDTO.setBookingId(booking.getId());
+                    List<BookingDTO> bookingList = bookingService.getAllBookingsBySeatIdAndDate(seat.getId(), date);
+                    if (bookingList != null){
+                        seatDTO.setBookingId(bookingList.get(0).getId());
                         System.out.println("Booking Present : "+ seatDTO.getBookingId());
-                        seatDTO.setStatus(booking.getStatus());
+                        seatDTO.setStatus(bookingList.get(0).getStatus());
                     }else{
                         seatDTO.setStatus(Status.AVAILABLE);
                     }

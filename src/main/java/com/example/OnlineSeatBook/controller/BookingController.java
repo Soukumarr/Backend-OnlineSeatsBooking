@@ -93,4 +93,12 @@ public class BookingController {
         return new ResponseEntity<>(bookings, HttpStatus.OK);
     }
 
+    @GetMapping("/all/date/{date}/seat/{seatId}")
+    public ResponseEntity<List<BookingDTO>> getAllBookingsBySeatIdandDate (@PathVariable("date") String dateString, @PathVariable("seatId") Integer seatId) {
+        LocalDate date = LocalDate.parse(dateString);
+        List<BookingDTO> bookings = bookingService.getAllBookingsBySeatIdAndDate(seatId, date);
+        return new ResponseEntity<>(bookings, HttpStatus.OK);
+
+    }
+
 }

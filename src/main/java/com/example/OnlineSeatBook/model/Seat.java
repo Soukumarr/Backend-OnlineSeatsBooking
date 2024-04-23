@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class Seat {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Integer id;
     @ManyToOne
     private Floor floor;
     private int seatIndex;

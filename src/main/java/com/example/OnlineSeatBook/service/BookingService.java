@@ -109,6 +109,7 @@ public class BookingService {
         if (booking == null) {
             return null;
         }
+        System.out.println("Booking : " + booking.getId());
         return convertToDTO(booking);
     }
 
@@ -151,5 +152,18 @@ public class BookingService {
         }else {
             return false;
         }
+    }
+
+    public List<BookingDTO> getAllBookingsBySeatIdAndDate(Integer seatId, LocalDate date) {
+
+        List<Booking> bookingList = bookingRepository.findAllBySeatAndDate(seatId, date);
+        if (!bookingList.isEmpty()){
+            List<BookingDTO> dtoList =
+            bookingList.stream().map(
+                    BookingDTO::convertToDTO
+            ).toList();
+            return dtoList;
+        }
+        return null;
     }
 }
