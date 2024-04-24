@@ -58,7 +58,7 @@ public class OfficeController {
         officeRepository.deleteById(id);
     }
     @CrossOrigin
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+//    @PreAuthorize("hasAnyAuthority('ROLE_USER','ROLE_ADMIN')")
     @GetMapping("/{officeId}/getFloors")
     public List<FloorDTO> getAllFloors(@PathVariable int officeId) {
         return officeService.getAllFloors(officeId);
