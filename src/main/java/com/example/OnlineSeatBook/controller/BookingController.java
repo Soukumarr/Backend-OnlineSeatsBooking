@@ -3,6 +3,7 @@ package com.example.OnlineSeatBook.controller;
 import com.example.OnlineSeatBook.dto.BookingDTO;
 import com.example.OnlineSeatBook.model.Booking;
 import com.example.OnlineSeatBook.service.BookingService;
+import com.example.OnlineSeatBook.service.HistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,9 @@ import java.util.Map;
 public class BookingController {
     @Autowired
     private BookingService bookingService;
+
+    @Autowired
+    private HistoryService historyService;
 
     // Create a new booking
     @PostMapping
@@ -99,6 +103,15 @@ public class BookingController {
         List<BookingDTO> bookings = bookingService.getAllBookingsBySeatIdAndDate(seatId, date);
         return new ResponseEntity<>(bookings, HttpStatus.OK);
 
+    }
+
+
+
+
+    @GetMapping("/history/user/{userId}")
+    public List<BookingDTO> getBookingHistory(
+            @PathVariable("userId") Long userId) {
+        return historyService.getHistory(userId);
     }
 
 }

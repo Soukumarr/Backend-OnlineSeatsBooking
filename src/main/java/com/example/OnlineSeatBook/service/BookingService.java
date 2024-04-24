@@ -86,7 +86,7 @@ public class BookingService {
 
     public Booking updateBooking(Long id, BookingDTO bookingDTO) {
         Booking existingBooking = bookingRepository.findById(id).orElseThrow(() -> new RuntimeException("Booking not found"));
-        Booking updatedBooking = convertToEntity(bookingDTO, null, null); // TODO: add user and seat
+        Booking updatedBooking = convertToEntity(bookingDTO, existingBooking.getSeat(), existingBooking.getUser()); // TODO: add user and seat
         existingBooking.setUser(updatedBooking.getUser());
         existingBooking.setSeat(updatedBooking.getSeat());
         existingBooking.setStartTime(updatedBooking.getStartTime());

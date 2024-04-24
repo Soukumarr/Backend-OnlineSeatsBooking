@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class SwapRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     @OneToOne
     @JoinColumn(name = "user_id_1")
     private User user1;
@@ -25,11 +25,11 @@ public class SwapRequest {
     // Getters, setters, and constructors
 
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -71,5 +71,13 @@ public class SwapRequest {
 
     public void setApproved(boolean approved) {
         isApproved = approved;
+    }
+
+    public SwapRequest(User user1, User user2, Seat seat1, Seat seat2, boolean isApproved) {
+        this.user1 = user1;
+        this.user2 = user2;
+        this.seat1 = seat1;
+        this.seat2 = seat2;
+        this.isApproved = isApproved;
     }
 }

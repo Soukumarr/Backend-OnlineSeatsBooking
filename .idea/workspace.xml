@@ -5,12 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="539f0be5-f369-43ac-a210-ec0244298089" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/controller/SwapController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/repository/SwapRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/service/HistoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/service/SwapService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/controller/BookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/controller/BookingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/model/Seat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/model/Seat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/model/SwapRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/model/SwapRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/repository/BookingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/repository/BookingRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/repository/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/service/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/service/BookingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/service/LayoutService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/OnlineSeatBook/service/LayoutService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +52,11 @@
     "kotlin-language-version-configured": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.example.OnlineSeatBook.repository" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="OnlineSeatBookApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.OnlineSeatBook.OnlineSeatBookApplication" />
